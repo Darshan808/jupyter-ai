@@ -209,5 +209,6 @@ async def test_handle_request_with_error(inline_handler):
     )
     await inline_handler.on_message(json.dumps(dict(dummy_request)))
     await inline_handler.tasks[0]
+    print("\n",inline_handler.messages[-1].dict(),"\n")
     error = inline_handler.messages[-1].dict().get("error", None)
     assert error is not None
